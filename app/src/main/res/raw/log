@@ -1,0 +1,74 @@
+11/3/2017 - Samuel Cowdery
+PROBLEM: Needed a way to sort cards effectively by rank value
+SOLUTION: Patrick used a mergeSort function that he learned in data structures v.impressive
+
+11/15/2017 - Samuel Cowdery
+PROBLEM: the player hands were being instantiated but then registered as null when sent through send info
+SOLUTION: It turns out you can't use a for each loop to instantiate objects, but must instead use a regular for loop
+            the hands were being only instantiated in the limited scope of the for each loop and were not being permenantly
+            instantiated in the gameState
+
+11/20/2017 - Samuel Cowdery
+PROBLEM: sometimes the computerplayer will be making its first move but will have 12 cards instead of 13
+SOLVED:  Samuel corrected the logic for Computer players determining if it was their turn to play a card
+
+11/20/2017 - Samuel Cowdery
+PROBLEM: switching the "leading player" is challenging because sometimes the computer player will sometimes think it is
+        playing second or third if it is supposed to be leading.
+SOLUTION Samuel made the turnInTrick variable equal to the number of cards in play
+
+11/20/2017 - Samuel Cowdery
+PROBLEM: needed to modify the playCard Button to appear green when it was the human player's turn to play
+SOLUTION: Samuel found a resource online (StackOverflow) that detailed how to use a handler to manage widgets in threads
+
+
+11/20/2017 - Samuel Cowdery
+PROBLEM: the computer player gets a little jumpy and doesn't wait for the human player and tries to play a second time
+         resulting in an index out of bounds exception
+SOLUTION: via modular arithmetic, the turn of the trick is determined by something other than the # of cards on the table
+
+
+11/20/2017 - Samuel Cowdery
+PROBLEM: if the human player does not move his/her seekbar after playing a card, the card played is NOT removed from the hand
+SOLUTION: Samuel set the selectedCard in the human player to null after playing a card
+
+11/20/2017 - Samuel Cowdery
+PROBLEM: there is a concurrent modification exception in the HumanPlayer tick method
+SOLUTION: Patrick used a better method to increment through the stack of cardsInPlay
+
+
+11/21/2017 - Samuel Cowdery
+PROBLEM: Crashes after new round ---- try using same methodology for trick with boolean
+SOLUTION: used a boolean and corrected the if statements to prevent scoreTrick & beginNewRound() from both being called
+
+11/21/2017 - Samuel Cowdery
+PROBLEM: the last card in the round sometimes cannot be played by the human player
+SOLUTION: beginNewRound() was re-engineered and the bug went away
+
+11/20/2017 - Samuel Cowdery
+PROBLEM: the scoreTrick method occasionally assigns the wrong "winningPlayerIdx" for the scored trick
+            and adds points to the wrong team and assigns the wrong leadPlayer to the mainState
+SOLUTION: Patrick used a simple array to track which player card matches each player and properly
+            assigns the winningPlayerIdx
+
+11/21/2017 - Samuel Cowdery
+PROBLEM: after creating a new round, the GUI is incorrect for the first play for the human
+SOLUTION: updated the beginNewRound() method
+
+11/21/2017 - Patrick Maloney
+PROBLEM: Computer players can lead with a card they just used to win the previous trick
+SOLUTION: Patrick removed the played card locally for each player
+
+11/31/2017 - Andrew Harrah
+PROBLEM: could not access the player names when trying to print the names by the card of the player
+SOLUTION: had to look into the game framework and find the array allPlayerNames[] that I could index through
+/////////////////UNRESOLVED////////////////////////////
+
+11/23/2017
+PROBLEM: occasionally, there is no delay between the first 2 computer players playing cards to start a new trick
+
+12/03/2017
+PROBLEM: ocasionally, the entire animation surface goes dark and nothing but the widgets are visible
+
+12/03/2017
+PROBLEM: If the 0 player bids low and p1 and p3 the player GUI is wrong for the first trick
