@@ -49,6 +49,7 @@ public class WhistHumanPlayer extends GameHumanPlayer implements Animator, OnCli
     private AnimationSurface Tablesurface;
     //the widgets to the gui
     private Button playCardButton;
+    private boolean hasTouched = false;
 
     private int selectedIdx = 5;
     private RectF[] cardIndicatorSpots = new RectF[13];
@@ -310,7 +311,7 @@ public class WhistHumanPlayer extends GameHumanPlayer implements Animator, OnCli
             for (int i = 0; i < myHand.getSize(); i++) {
                 drawCard(g, handSpots[(myHand.getSize()-1)-i], myHand.getCardByIndex(i));
             }
-            if(selectedIdx>=0) {
+            if(savedState.turn == getPlayerIdx() && hasTouched) {
                 g.drawOval(cardIndicatorSpots[selectedIdx], myTeamPainter);
             }
         }
@@ -370,6 +371,7 @@ public class WhistHumanPlayer extends GameHumanPlayer implements Animator, OnCli
                     break;
                 }
             }
+            hasTouched = true;
         }
 
 
@@ -483,6 +485,7 @@ public class WhistHumanPlayer extends GameHumanPlayer implements Animator, OnCli
                 else game.sendAction(new PlayCardAction(this, selectedCard));
                 b.setBackgroundColor(Color.DKGRAY);
                 selectedCard = null;
+                hasTouched = false;
             }
             else flash(Color.RED,1000);
         }

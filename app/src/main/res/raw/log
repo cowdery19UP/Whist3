@@ -72,3 +72,8 @@ PROBLEM: ocasionally, the entire animation surface goes dark and nothing but the
 
 12/03/2017
 PROBLEM: If the 0 player bids low and p1 and p3 the player GUI is wrong for the first trick
+
+12/05/2017 - Patrick Maloney
+PROBLEM: With the GUI without the SeekBar, on a new round the indicator obal would be drawn on the incorrect card.
+SOLUTION: Added a boolean instance variable to determine whether or not the player has touched the screen, and only displaying
+          the indicator if the player has touched the screen and it is that player's turn.
