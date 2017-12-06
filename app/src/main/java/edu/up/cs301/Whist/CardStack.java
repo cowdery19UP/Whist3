@@ -2,6 +2,7 @@ package edu.up.cs301.Whist;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -13,7 +14,7 @@ import edu.up.cs301.card.Suit;
  * Workhorse Class that holds an array list of cards called stack
  */
 
-public class CardStack {
+public class CardStack implements Serializable{
 
     protected ArrayList<Card> stack = new ArrayList<Card>();
 
