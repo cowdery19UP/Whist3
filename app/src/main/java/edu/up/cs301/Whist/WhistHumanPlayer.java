@@ -428,7 +428,7 @@ public class WhistHumanPlayer extends GameHumanPlayer implements Animator, OnCli
             //handSpots[i] = new RectF(middle-100-(-350+(i*100)),top,middle+100-(-350+(i*100)),bottom);
         }
         for(int i = 0; i<myHand.getSize();i++){
-            cardIndicatorSpots[i] = new RectF((0+(i*150)),top-40,200+(i*150),top);
+            cardIndicatorSpots[i] = new RectF((50+(i*150)),top-40,150+(i*150),top);
         }
 
     }
