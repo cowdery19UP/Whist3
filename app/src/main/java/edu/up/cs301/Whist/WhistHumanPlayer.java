@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -410,8 +411,8 @@ public class WhistHumanPlayer extends GameHumanPlayer implements Animator, OnCli
     //TODO There is still a concurrent modification exception at this method as of 12/2/2017
     private void setTableDisplay(Canvas g){
            int Startspot = savedState.leadPlayer;
-           ArrayList<Card> stackCopy = (ArrayList<Card>)savedState.cardsInPlay.stack.clone();
-           for (Card c : stackCopy) {
+           CardStack stackCopy = new CardStack(savedState.cardsInPlay);
+           for (Card c : stackCopy.stack) {
                drawCard(g, tableSpots[Startspot % 4], c);
                Startspot++;
            }
